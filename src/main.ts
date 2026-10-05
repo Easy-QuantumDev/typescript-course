@@ -1,61 +1,3 @@
-let name : string = 'mohammadreza'
-let age : number = 22
-let status : boolean = true
-let result : null = null
-let value : undefined = undefined
-
-console.log(name)
-console.log(age)
-console.log(status)
-console.log(result)
-console.log(value)
-
-let value2:any;
-value2="mohammadreza"
-console.log(value2)
-
-if(typeof value2==='string'){
-    console.log(value2.toUpperCase())
-}
-value2 = 22
-if(typeof value2==='number'){
-    console.log(value2)
-}
-
-let union : string|number = 'mohammadreza'
-console.log(union)
-union = 22
-console.log(union)
-
-
-function test(value:string|boolean){
-    if(typeof value==='string'){
-        console.log(value.toUpperCase())
-
-    }else{
-        console.log(value)
-    }
-}
-
-test('alireza')
-
-type Status ='loading'|'pending'|'finish';
-let s : Status = 'pending';
-console.log(s)
-
-let users :{
-    name:string
-    age:number
-    status : 'admin'|'guest'|'user'
-}={
-    name:'mohammadreza',
-    age:22,
-    status:"user"
-
-}
-console.log(users)
-
-
 
 
 
@@ -180,3 +122,56 @@ console.log(users)
 //     name: 'mohammadreza',
 //     role: 'admin'
 // }
+
+
+// //////////////////////////////////////////Interface/////////////////////
+// interface User{
+//     name:string
+//     age:number
+//     city:string
+
+// }
+
+
+// const user1:User={
+//     name:"mohammadreza",
+//     age:22,
+//     city:"new york",
+
+// }
+// interface Product{
+//     title:string
+//     product_name:string
+//     price:number
+//     stock:number
+// }
+// let product1:Product={
+//     title:"phone",
+//     product_name:"iphone 18 pro max",
+//     price:1300,
+//     stock:6,
+
+// }
+// console.log(user1)
+// console.log(product1)
+
+
+
+// /////////////////////interface extends to another interface ////////////////////
+interface User{
+    name:string
+    age:number
+    city:string
+
+}
+
+interface Admin extends User{
+    permissions:string[]
+}
+let admin1:Admin = {
+    name:"alireza",
+    age:26,
+    city:"mashhad",
+    permissions : ['staff','active']
+}
+console.log(admin1)
