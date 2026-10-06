@@ -1,11 +1,11 @@
 "use strict";
-/////////////////////////Document 
+/////////////////////////Document
 Object.defineProperty(exports, "__esModule", { value: true });
-let admin1 = {
-    name: "alireza",
-    age: 26,
-    city: "mashhad",
-    permissions: ['staff', 'active']
+let user = {
+    name: "mohammadreza",
+    greet(message) {
+        return `my cousin is : ${message}`;
+    }
 };
-console.log(admin1);
+console.log(user.greet('alireza'));
 //# sourceMappingURL=main.js.map
