@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 /////////////////////////Document
 
 // ////////////////////////////////////Explicit Typing
@@ -214,14 +225,79 @@
 
 ///////////////////////////////////////// with parameter
 
-interface User{
-    name:string,
-    greet(message:string):string
+// interface User{
+    //     name:string,
+    //     greet(message:string):string
+    // }
+    // let user:User={
+        //     name:"mohammadreza",
+        //     greet(message){
+            //         return `my cousin is : ${message}`
+            //     }
+            // }
+            // console.log(user.greet('alireza'))
+            
+            
+
+/////////////////////////////////////////////////////////// function ///////////////////
+
+// function add(a:number, b: number): number {
+//     return a+b
+// }
+
+// console.log(add(10,10))
+
+/////////////////////////////////////////////////////////// Function Type ///////////////////
+// type AddFunction = (a:number,b:number)=>number
+// const add :AddFunction=(a,b)=>{
+//     return a+b
+// }
+
+// console.log(add(10,10))
+
+
+
+///////////////////////////////////////////FUNCTION TYPES IN INTERFACE///////////////////////
+
+// interface Calculator{
+    //     add(a:number,b:number):number
+//     multiple(a:number,b:number):number
+
+// }
+
+
+// let calculator:Calculator={
+    //     add(a,b){
+//         return a+b
+//     },
+//     multiple(a, b) {
+    //         return a*b
+    
+//     },
+// }
+// console.log(calculator.add(10,10))
+// console.log(calculator.multiple(10,10))
+
+///////////////////////////////////////////FUNCTIONS WITH REST PARAMETERS///////////////////////
+// function sum(...numbers:number[]):number{
+//     return numbers.reduce((total,number)=>total+number,0)/numbers.length
+
+
+// }
+// console.log(sum(19,19,19,100))
+
+
+/////////////////////////////////////////// FUNCTION WITH CALLBACK ///////////////////////////////
+
+type Operation = (a:number,b:number) => number
+function Calculate(a:number,b:number,operation:Operation):number{
+    return operation(a,b)
 }
-let user:User={
-    name:"mohammadreza",
-    greet(message){
-        return `my cousin is : ${message}`
-    }
-}
-console.log(user.greet('alireza'))
+let add :Operation = (a,b)=>a+b
+let multiple :Operation = (a,b)=>a*b
+let minus :Operation = (a,b)=>a-b
+let other :Operation = (a,b)=>a/b
+console.log(Calculate(10,10,add))
+console.log(Calculate(10,10,multiple))
+console.log(Calculate(10,10,minus))
+console.log(Calculate(10,10,other))
