@@ -7,11 +7,10 @@
 
 
 
-
-
 /////////////////////////Document
 
 // ////////////////////////////////////Explicit Typing
+
 
 // let age : number = 22
 // let name : string='mohammadreza'
@@ -289,15 +288,122 @@
 
 /////////////////////////////////////////// FUNCTION WITH CALLBACK ///////////////////////////////
 
-type Operation = (a:number,b:number) => number
-function Calculate(a:number,b:number,operation:Operation):number{
-    return operation(a,b)
+// type Operation = (a:number,b:number) => number
+// function Calculate(a:number,b:number,operation:Operation):number{
+    //     return operation(a,b)
+    // }
+    // let add : Operation=(a,b)=>a+b;
+    // let subtract : Operation=(a,b)=>a-b;
+    // let multiple : Operation=(a,b)=>a*b;
+    // let divide : Operation=(a,b)=>a/b;
+    // console.log(Calculate(10,10,add))
+    // console.log(Calculate(10,10,subtract))
+    // console.log(Calculate(10,10,multiple))
+    // console.log(Calculate(10,10,divide))
+    
+/////////////////////////////////////////// FUNCTION WITH CALLBACK with interface///////////////////////////////
+
+// interface Calculate{
+    //     add(a:number,b:number):number
+//     multiply(a:number,b:number):number
+// }
+// const calculate:Calculate={
+//     add(a:number,b:number){
+//         return a+b
+//     },
+//     multiply(a:number,b:number){
+    //         return a*b
+    //     }
+    // }
+    
+// console.log(calculate.add(10,10))
+// console.log(calculate.multiply(10,10))
+
+/////////////////////////////////////////// Intersection Types (&) ///////////////////////////////
+
+// type User = {
+    //     name : string
+    //     age:number
+
+    // }
+    // type Admin  = {
+        //     permissions : string[]
+        // }
+        // type UserAdmin  = User&Admin
+        
+        // const admin : UserAdmin={
+            //     name : "mohammadreza",
+            //     age:22,
+            //     permissions : ['staff']
+            // }
+            // console.log(admin)
+            
+/////////////////////////////////////////// Generics ///////////////////////////////
+
+// function getValue<T>(value:T):T{
+//     return value
+
+// }
+
+// const result1 = getValue<string>('hello')
+// const result2 = getValue<number>(1)
+// const result3 = getValue<boolean>(true)
+// console.log(result1)
+// console.log(result2)
+// console.log(result3)
+
+// //////////////////////////////////////////////////////WITHOUT EXTENDS
+// function FirstItem<T>(list: T[]):T|undefined{
+    //     return list[0]
+    // }
+    // const result1 = FirstItem<string>(['item1','item2'])
+// const result2 = FirstItem<number>([1,10])
+// const result3 = FirstItem<boolean>([false,true])
+// console.log(result1)
+// console.log(result2)
+// console.log(result3)
+
+////////////////////////////////////////////////////////WITH EXTENDS
+
+// function GetLength <T extends {length:number}>(value:T):number{
+    //     return value.length
+    // }
+    // console.log(GetLength("mohammadreza"))
+    // console.log(GetLength([10,100,500,600]))
+
+
+
+/////////////////////////////////////////////////////////////GENERIC INTERFACE
+
+
+// interface Api<T>{
+//         success :boolean
+//         data:T
+//     message:string
+
+// }
+// const response :Api<unknown> ={
+//     success : true,
+//     data:{"data":"mohammadreza"},
+//     message:"ok"
+
+// }
+
+/////////////////////////////////////////////////////////////GENERIC INTERFACE INCLUDE TYPES
+
+type User={
+    id:number
+    name:string
+    
 }
-let add :Operation = (a,b)=>a+b
-let multiple :Operation = (a,b)=>a*b
-let minus :Operation = (a,b)=>a-b
-let other :Operation = (a,b)=>a/b
-console.log(Calculate(10,10,add))
-console.log(Calculate(10,10,multiple))
-console.log(Calculate(10,10,minus))
-console.log(Calculate(10,10,other))
+interface Api<T> {
+    success : boolean
+    data : T
+
+}
+let response :Api<User>={
+    success:true,
+    data:{id:1,name:"mohanammadreza"}
+
+}
+console.log(response)
